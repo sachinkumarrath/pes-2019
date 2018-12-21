@@ -1,0 +1,14 @@
+{
+  "name": "pes-2019",
+  "version": "0.0.1",
+  "description": "pes tournament update",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "sachin rath",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.7.0"
+  }
+}
