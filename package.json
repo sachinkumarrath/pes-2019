@@ -1,6 +1,6 @@
 {
   "name": "pes-2019",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "pes tournament update",
   "main": "index.js",
   "scripts": {
