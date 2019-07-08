@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "devStart": "webpack-dev-server -d --config webpack.config.dev.js"
+    "devStart": "webpack-dev-server -d --config webpack.config.dev.js",
+    "start": "babel-node src/services/server.js"
   },
   "author": "sachin rath",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "express": "^4.16.4",
-    "react": "^16.7.0",
-    "react-dom": "^16.8.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-router": "^4.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
