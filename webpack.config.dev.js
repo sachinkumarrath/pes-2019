@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins : [],
   devtool: "inline-source-map",
-  watch : true,
+  watch : false,
   module: {
     rules: [
       {
