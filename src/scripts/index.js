@@ -1,16 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 
 import rootReducer from "./reducers";
 import Home from "./components/home/Home";
 
-const store = createStore(rootReducer, composeWithDevTools(
-  applyMiddleware(thunk)
-));
+let store;
+
+if (process.env.NODE_ENV === "production") {
+  store = createStore(rootReducer, compose(
+    applyMiddleware(thunk)
+  ));
+} else {
+  const composeWithDevTools = require("redux-devtools-extension");
+  store = createStore(rootReducer, composeWithDevTools(
+    applyMiddleware(thunk)
+  ));
+}
 
 const BaseComponent = () => {
   return <Home />;
