@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 	mode : "production",
@@ -9,7 +10,16 @@ module.exports = {
       publicPath : "/public/assets/",
       filename : "build.js"
   },
-  plugins:[],
+  plugins:[
+    new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(true)
+    }),
+    new MiniCssExtractPlugin({
+      path : path.resolve("build"),
+      publicPath : "/public/assets/",
+      filename: "style.css"
+    })
+  ],
   devtool: "source-map",
   watch : false,
   module: {
@@ -23,6 +33,14 @@ module.exports = {
             presets: ["@babel/preset-env", "@babel/preset-react"]
           }
         }
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ]  
       }
     ]
   }

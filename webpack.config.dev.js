@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
 	mode : "development",
@@ -8,7 +9,11 @@ module.exports = {
       publicPath : "/public/assets/",
       filename : "build.js"
   },
-  plugins : [],
+  plugins : [
+    new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(false)
+    }),
+  ],
   devtool: "inline-source-map",
   watch : false,
   module: {
@@ -22,6 +27,15 @@ module.exports = {
             presets: ["@babel/preset-env", "@babel/preset-react"]
           }
         }
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]  
       }
     ]
   }

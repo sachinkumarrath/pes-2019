@@ -2,6 +2,6 @@ import React, {Component} from "react";
 
 export default class Home extends Component {
   render (){
-    return <div>Place holder for home page2</div>;
+    return <div><h2>PES - Sep 2019</h2></div>;
   }
 }

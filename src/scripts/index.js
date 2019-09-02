@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 
 import rootReducer from "./reducers";
 import Home from "./components/home/Home";
+import style from "../styles/index.css";
 
 let store;
 
@@ -14,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
     applyMiddleware(thunk)
   ));
 } else {
-  const composeWithDevTools = require("redux-devtools-extension");
+  const composeWithDevTools = require("redux-devtools-extension").composeWithDevTools;
   store = createStore(rootReducer, composeWithDevTools(
     applyMiddleware(thunk)
   ));
