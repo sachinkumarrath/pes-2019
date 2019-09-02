@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "development") {
   }));
 }
 
-// compression
+// add compression
 app.use(compression());
 
 // app.use((req, res, next) => {

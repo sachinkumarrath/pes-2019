@@ -4,7 +4,7 @@ import {MongoClient} from "mongodb";
 const url = "mongodb://ds249017.mlab.com:49017/heroku_9sl76rdx";
 // Database Name
 const dbName = "heroku_9sl76rdx";
-const urlCred = "mongodb://pes-admin:w3lc0m3t0p3s@ds249017.mlab.com:49017/heroku_9sl76rdx";
+const urlCred = process.env.MONGODB_URI;
 // Connect using MongoClient
 const configOption = {
   "useNewUrlParser:": true,
