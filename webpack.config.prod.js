@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
 	mode : "production",
@@ -8,8 +9,8 @@ module.exports = {
       publicPath : "/public/assets/",
       filename : "build.js"
   },
-  plugins : [],
-  devtool: "inline-source-map",
+  plugins:[],
+  devtool: "source-map",
   watch : false,
   module: {
     rules: [

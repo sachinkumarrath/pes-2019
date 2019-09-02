@@ -2,25 +2,39 @@ import express from "express";
 import path from "path";
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
-import config from "../../webpack.config.dev";
+import dotenv from "dotenv";
+import compression from "compression";
 
 import {connectDB} from "./dbConnector";
 import {matchReports} from "./match-reports";
 
+// to load env valiable from .env
+dotenv.config();
+
 const port = process.env.PORT || 1900;
 const app = express();
-const compiler = webpack(config);
 
-app.use((req, res, next) => {
-    console.log("middleware for all requests");
-    next();
-});
+let webpackConfig;
+
+if (process.env.NODE_ENV === "development") {
+  webpackConfig = require("../../webpack.config.dev");
+  const compiler = webpack(webpackConfig);
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: webpackConfig.output.publicPath
+  }));
+}
+
+// compression
+app.use(compression());
+
+// app.use((req, res, next) => {
+//     console.log("middleware for all requests");
+//     next();
+// });
 
 app.use("/reports", matchReports);
 
-app.use(webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath
-}));
+app.use("/public/assets/", express.static(path.join(__dirname, "../../build")));
 
 app.use("/redux-sample", (req, res, next) => {
     console.log("middleware for redux-sample requests");
@@ -45,4 +59,4 @@ app.get("/connect-db", (req, res) => {
 });
 
 app.listen(port);
-console.log(`-------- server started ar port no ${port} --------`);
+console.log(`-------- server started at port no ${port} in ${process.env.NODE_ENV} --------`);

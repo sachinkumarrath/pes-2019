@@ -24,10 +24,5 @@ module.exports = {
         }
       }
     ]
-  },
-  devServer: {
-    contentBase : "./src/pages",
-    port : 9090,
-    inline : true
   }
 };
