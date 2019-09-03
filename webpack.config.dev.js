@@ -29,7 +29,7 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(css|s[ac]ss)$/,
         exclude: /node_modules/,
         use: [
           "style-loader",

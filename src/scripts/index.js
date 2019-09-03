@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 
 import rootReducer from "./reducers";
 import Home from "./components/home/Home";
-import style from "../styles/index.css";
+import style from "../styles/index.scss";
 
 let store;
 
